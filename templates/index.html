@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %} Portfolio {% endblock %}
+
+
+{% block main %}
+    <div class="alert alert-primary" role="alert">Bought!</div>
+
+    <table class="table table-striped table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Shares</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stock in portfolio %}
+                    <tr>
+                        <td>{{ stock.stock_symbol }}</td>
+                        <td>{{ stock.shares_count }}</td>
+                        <td>{{ stock.stock_price | usd }}</td>
+                        <td>{{ (stock.stock_price * stock.shares_count) | usd }}</td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <th>Cash</th>
+                        <td>{{ cash_value | usd}}</td>
+                    </tr>
+                    <tr>
+                        <th>Total</th>
+                        <td>{{ (portfolio_value + cash_value) | usd }}</td>
+                    </tr>
+            </tbody>
+        </table>
+{% endblock %}

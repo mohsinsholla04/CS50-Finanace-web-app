@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+    Quote Result
+{% endblock %}
+
+
+{% block main %}
+    <table class="table table-striped table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ name }}</td>
+                    <td>{{ price | usd}}</td>
+                </tr>
+            </tbody>
+        </table>
+{% endblock %}
